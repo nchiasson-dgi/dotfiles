@@ -1,0 +1,23 @@
+if [[ -f "$SSHHOME/.sshrc.d/.bash_aliases" ]]; then
+  source "$SSHHOME/.sshrc.d/.bash_aliases"
+fi
+if [[ -f "$SSHHOME/.sshrc.d/.bash_prompt" ]]; then
+  source "$SSHHOME/.sshrc.d/.bash_prompt"
+fi
+
+# VIM
+export VIMINIT="let \$MYVIMRC='$SSHHOME/.sshrc.d/.vimrc' | source \$MYVIMRC"
+
+# Become root and maintain sshrc
+sbash(){
+  sudo -E bash --rcfile $SSHHOME/.sshrc
+}
+
+# Override typical -Es to become root and maintain sshrc
+sudo() {
+  if [[ $@ == "-Es" ]]; then
+    sudo -E bash --rcfile $SSHHOME/.sshrc
+  else
+    command sudo "$@"
+  fi
+}

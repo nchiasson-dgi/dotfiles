@@ -1,0 +1,3 @@
+[submodule "sshrc"]
+	path = sshrc
+	url = git@github.com:nchiasson-dgi/sshrc.git
