@@ -8,6 +8,7 @@ if [ -f ~/.bash_prompt ]; then
   source ~/.bash_prompt
 fi
 
+alias ssh='sshrc'
 alias lg_vagrant='VM_MEMORY_GB=16 VM_CPU_COUNT=4 vagrant'
 alias md_vagrant='VM_MEMORY_GB=8 VM_CPU_COUNT=2 vagrant'
 alias vagrant_destroy='VAGRANT_IGNORE_TRIGGERS=true vagrant destroy'
