@@ -16,3 +16,4 @@ alias aws_login='aws sso login --profile demos'
 alias clear_branches="git branch | grep 'dev_\|qa_' | xargs -L1 git branch -D"
 alias flush="sudo pkill -HUP -x mDNSResponder"
 alias ll="ls -alhp"
+alias grep='grep --color=always'
