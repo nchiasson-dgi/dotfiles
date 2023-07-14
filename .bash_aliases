@@ -2,7 +2,7 @@
 if [[ "${HOSTNAME}" =~ "wmc" ]]; then
   export UPLOAD_DIR='/mnt/uploads';
   export SAMPLE_DIR='/home/ubuntu/sample_data_set'
-  alias SDU='mkdir -p ${UPLOAD_DIR} ; mv ${SAMPLE_DIR}/* . ; chmod -R 555 ${UPLOAD_DIR} ; chown -R www-data:www-data ${UPLOAD_DIR}';
+  alias SDU='mkdir -p ${UPLOAD_DIR} ; mv ${SAMPLE_DIR}/* ${UPLOAD_DIR} ; chmod -R 555 ${UPLOAD_DIR} ; chown -R www-data:www-data ${UPLOAD_DIR}';
 elif [[ "${HOSTNAME}" =~ "usfws" ]]; then
   export UPLOAD_DIR='/sftp/sftp_usfws/uploads';
   export SAMPLE_DIR='/home/ubuntu/sample_data_set';
