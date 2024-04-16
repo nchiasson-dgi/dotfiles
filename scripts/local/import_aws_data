@@ -1,0 +1,8 @@
+#!/bin/bash
+
+import_data_aws () {
+  scp -r ~/Desktop/TEST_DATA/sample_data_set "${1}:/home/ubuntu"
+  echo "Import finished."
+}
+
+import_data_aws $1

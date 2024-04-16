@@ -1,0 +1,35 @@
+#!/bin/zsh
+
+#if [ -z "$SUDO_COMMAND" ]
+#  then
+#    echo -e "Only root can run this script.\nRelaunching script with sudo.\n"
+#    sudo -E $0 $*
+#    exit 0
+#fi
+box='/Users/${USER}/bin/box'
+
+while getopts hr flag
+do
+    case "${flag}" in
+        h)
+          echo "Removes oldest boxes in AWS. Provide an amount otherwise last 1 will be cleared"
+          echo
+          echo "Syntax: ${0##*/} [-h]"
+          echo "Options:"
+          echo "  -h     Print this help."
+          exit;;
+        \?)
+          echo "Error: Invalid Option"
+          exit;;
+    esac
+done
+
+# Set contributor default if not specified.
+if [[ -z $1 ]]
+  then
+    amount=1
+else
+  amount=$1
+fi
+
+${box} ls | tail -${amount} | xargs -L1 ${box} rm

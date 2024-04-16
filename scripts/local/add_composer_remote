@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# WIP
+jq '.repositories += [{"type": "git", "url": "git@github.com:'$1.git'"}]' --indent 4 composer.json >tmp.composer.json && mv tmp.composer.json composer.json

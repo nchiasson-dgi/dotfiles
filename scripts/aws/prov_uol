@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -e
+
+DRUSH="/opt/www/drupal/vendor/bin/drush"
+
+echo "Rolling back islandora migrations"
+sudo -u www-data $DRUSH -y dgi-migrate:rollback --user=1 --group=islandora
+echo "Enabling content_sync"
+sudo -u www-data $DRUSH en content_sync
+echo "Importing provisioned_content"
+sudo -u www-data $DRUSH -y content-sync:import provisioned_content --actions=create --user=1
+echo "Importing i8-specific content"
+sudo -u www-data $DRUSH -y content-sync:import i8-specific --actions=create --user=1
+echo "Running islandora migrations"
+sudo -u www-data $DRUSH -y migrate:import --userid=1 --group=islandora
+echo "Uninstalling content_sync"
+sudo -u www-data $DRUSH pm:uninstall content_sync
+
+echo "Updating allowed-external-content file."
+sudo cat <<EOF > /opt/fcrepo/fcrepo/configs/allowed-external-content.txt
+http://$(hostname).dev.dgi/
+http://localhost/
+http://127.0.0.1:80/
+EOF
+
+echo "Restarting tomcat service"
+sudo service tomcat-default restart
+echo "Provision Script Finished"
