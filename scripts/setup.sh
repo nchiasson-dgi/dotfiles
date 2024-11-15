@@ -13,7 +13,7 @@ if ! [ -x "$(command -v git)" ]; then
   fi
 fi
 
-git clone https://github.com/nchiasson-dgi/dotfiles.git ~/dotfiles
+#git clone https://github.com/nchiasson-dgi/dotfiles.git ~/dotfiles
 
 symlink() {
   if [[ -e ~/$1 ]]; then

@@ -18,3 +18,10 @@ alias flush="sudo pkill -HUP -x mDNSResponder"
 alias ll="ls -alhp"
 alias grep='grep --color=always'
 alias cc='ddev drush ev "drupal_flush_all_caches();" ; ddev drush cr'
+alias addrole="ddev drush user:role:add 'administrator' islandora"
+alias BI='ddev drush migrate:batch-import --user=1';
+alias BIT='ddev drush migrate:batch-import --user=1 --group=isi__test_ingest';
+alias RB='ddev drush migrate:rollback --user=1';
+alias RBT='ddev drush migrate:rollback --user=1 --group=isi__test_ingest';
+alias MR='ddev drush migrate-reset';
+export PATH="/opt/homebrew/opt/node@20/bin:$PATH"

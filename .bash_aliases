@@ -37,5 +37,5 @@ alias git_creds='git config --global user.email "<email>" ; git config --global 
 alias AR='sudo bash /home/ubuntu/bin/add_remotes.sh'
 alias ll='ls -alhp --color=auto'
 alias grep='grep --color=always'
-alias cc='drush ev "drupal_flush_all_caches();"'
+alias cc='drush ev "drupal_flush_all_caches();" ; drush cr'
 alias addrole="drush user:role:add 'administrator' islandora"
