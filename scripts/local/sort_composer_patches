@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# WIP
+
+VAL=$(jq -S '.extra.patches' composer.json)
+
+echo $VAL
+
+jq ".extra.patches |= $VAL" --indent 4 composer.json >tmp.composer.json && mv tmp.composer.json composer.json
